@@ -1,5 +1,7 @@
 <script>
-  import Nav from '../components/Nav.svelte';
+  import { FirebaseApp } from "sveltefire";
+  import { fire } from "../config/firebase";
+  import Nav from '../templates/Nav.svelte';
 
   export let segment;
 </script>
@@ -41,8 +43,10 @@
   </style>
 </svelte:head>
 
-<Nav {segment}/>
+<FirebaseApp firebase={fire}>
+  <Nav {segment}/>
 
-<main>
-  <slot></slot>
-</main>
+  <main>
+    <slot></slot>
+  </main>
+</FirebaseApp>
